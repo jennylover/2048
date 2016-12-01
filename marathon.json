@@ -29,7 +29,7 @@
   },
   "labels": {
     "HAPROXY_GROUP": "external",
-    "HAPROXY_0_VHOST":"popori.mooo.com"
+    "HAPROXY_0_VHOST":"dcos.mooo.com"
   },
   "portDefinitions": [
     {
