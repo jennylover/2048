@@ -29,7 +29,7 @@
   },
   "labels": {
     "HAPROXY_GROUP": "external",
-    "HAPROXY_0_VHOST":"dcos.mooo.com"
+    "HAPROXY_0_VHOST":"dcosrunagents.japanwest.cloudapp.azure.com"
   },
   "portDefinitions": [
     {
