@@ -29,7 +29,7 @@
   },
   "labels": {
     "HAPROXY_GROUP": "external",
-    "HAPROXY_0_VHOST":"dcos.popori.cf"
+    "HAPROXY_0_VHOST":"nginx.popori.cf"
   },
   "portDefinitions": [
     {
