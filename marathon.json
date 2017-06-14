@@ -29,7 +29,7 @@
   },
   "labels": {
     "HAPROXY_GROUP": "external",
-    "HAPROXY_0_VHOST":"2048.popori.cf"
+    "HAPROXY_0_VHOST":"0614.popori.cf"
   },
   "portDefinitions": [
     {
