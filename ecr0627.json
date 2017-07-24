@@ -1,14 +1,8 @@
 {
     "networkMode": "bridge",
-    "taskRoleArn": null,
     "containerDefinitions": [
         {
-            "volumesFrom": [],
             "memory": 128,
-            "extraHosts": null,
-            "dnsServers": null,
-            "disableNetworking": null,
-            "dnsSearchDomains": null,
             "portMappings": [
                 {
                     "hostPort": 0,
@@ -16,21 +10,9 @@
                     "protocol": "tcp"
                 }
             ],
-            "hostname": null,
             "essential": true,
-            "entryPoint": null,
-            "mountPoints": [],
             "name": "2048",
-            "ulimits": null,
-            "dockerSecurityOptions": null,
-            "environment": [],
-            "links": null,
-            "workingDirectory": null,
-            "readonlyRootFilesystem": null,
             "image": "140594921984.dkr.ecr.ap-southeast-1.amazonaws.com/ecr0627:latest",
-            "command": null,
-            "user": null,
-            "dockerLabels": null,
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
@@ -39,12 +21,8 @@
                     "awslogs-stream-prefix": "2048"
                 }
             },
-            "cpu": 0,
-            "privileged": null,
-            "memoryReservation": null
+            "cpu": 0
         }
     ],
-    "volumes": [],
     "family": "task-2048",
-    "placementConstraints": []
 }
