@@ -1,8 +1,12 @@
 {
-    "networkMode": "bridge",
+    "family": "task-2048",
     "containerDefinitions": [
         {
+            "image": "140594921984.dkr.ecr.ap-southeast-1.amazonaws.com/ecr0627:latest",
+            "name": "2048",
+            "cpu": 0,
             "memory": 128,
+            "essential": true,
             "portMappings": [
                 {
                     "hostPort": 0,
@@ -10,9 +14,6 @@
                     "protocol": "tcp"
                 }
             ],
-            "essential": true,
-            "name": "2048",
-            "image": "140594921984.dkr.ecr.ap-southeast-1.amazonaws.com/ecr0627:latest",
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
@@ -20,9 +21,7 @@
                     "awslogs-region": "ap-southeast-1",
                     "awslogs-stream-prefix": "2048"
                 }
-            },
-            "cpu": 0
+            }
         }
-    ],
-    "family": "task-2048",
+    ]
 }
