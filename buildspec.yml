@@ -3,6 +3,7 @@ phases:
   pre_build:
     commands:
       - $(aws ecr get-login)
+      - printenv
   build:
     commands:
       - docker build --tag "${REPOSITORY_URI}:${TAG}" .
