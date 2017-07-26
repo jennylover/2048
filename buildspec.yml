@@ -3,7 +3,9 @@ phases:
   pre_build:
     commands:
       - $(aws ecr get-login)
-      - TAG="$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | head -c 8)"
+      - printf '{"tag1":"%s"}' $CODEBUILD_RESOLVED_SOURCE_VERSION
+      - printf '{"tag2":"%s"}' $CODEBUILD_SOURCE_VERSION
+      - TAG="$(echo $CODEBUILD_SOURCE_VERSION | head -c 8)"
   build:
     commands:
       - docker build --tag "${REPOSITORY_URI}:${TAG}" .
