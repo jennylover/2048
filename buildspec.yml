@@ -1,4 +1,10 @@
 version: 0.2
+
+environment_variables:
+  plaintext:
+    "ECR_URI": "140594921984.dkr.ecr.ap-northeast-1.amazonaws.com/2048"
+    "ECR_TAG": "14"
+
 phases:
   pre_build:
     commands:
@@ -6,10 +12,11 @@ phases:
       - printenv
   build:
     commands:
-      - docker build --tag "${REPOSITORY_URI}:${TAG}" .
+      - docker build --tag "${ECR_URI}:${ECR_TAG}" .
   post_build:
     commands:
-      - docker push "${REPOSITORY_URI}:${TAG}"
-      - printf '{"tag":"%s"}' $TAG > build.json
+      - docker push "${ECR_URI}:${ECR_TAG}"
+      - printf '{"tag":"%s"}' $ECR_TAG > build.json
+
 artifacts:
   files: build.json
