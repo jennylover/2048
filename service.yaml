@@ -48,7 +48,7 @@ Resources:
   TaskDefinition:
     Type: AWS::ECS::TaskDefinition
     Properties:
-      Family: !Sub 2048-mbp-task
+      Family: !Sub 2048-codepipe-task
       ContainerDefinitions:
         - Name: 2048
           Image: !Sub ${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com/${Repository}:${Tag}

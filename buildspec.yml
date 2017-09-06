@@ -2,8 +2,8 @@ version: 0.2
 
 environment_variables:
   plaintext:
-    "ECR_URI": "140594921984.dkr.ecr.ap-northeast-1.amazonaws.com/2048"
-    "ECR_TAG": "26"
+    "ECR_URI": "140594921984.dkr.ecr.ap-southeast-1.amazonaws.com/2048"
+    "ECR_TAG": "3"
 
 phases:
   pre_build:
