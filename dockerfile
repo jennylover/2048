@@ -1,4 +1,5 @@
 FROM tutum/lamp:latest
 RUN rm -fr /app && git clone https://github.com/gabrielecirulli/2048.git /app
-EXPOSE 8080 3306
+RUN sed -i "s/<title>2048<\/title>/<title>2048-$(date)<\/title>/g" /app/index.html
+EXPOSE 80 3306
 CMD ["/run.sh"]
