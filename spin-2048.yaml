@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: my-2048
-        image: sdscello/2048:1
+        image: sdscello/git-2048:release-1.2
         ports:
         - containerPort: 80
 ---
