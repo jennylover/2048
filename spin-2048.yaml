@@ -1,59 +1,21 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: spinnaker-demo-config
-  namespace: default
-data:
-  NEW_FEATURE: "true"
-
----
-
-apiVersion: apps/v1beta2
+apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: spinnaker-demo
-  namespace: default
+  name: nginx-deployment
   labels:
-    source: demo
-    stack: frontend
-    app: spinnaker
+    app: nginx
 spec:
   replicas: 3
   selector:
     matchLabels:
-      source: demo
-      app: spinnaker
+      app: nginx
   template:
     metadata:
       labels:
-        source: demo
-        app: spinnaker
+        app: nginx
     spec:
       containers:
-      - name: primary
-        image: index.docker.io/lwander/spin-kub-v2-demo
+      - name: nginx
+        image: nginx:1.7.9
         ports:
-        - containerPort: 8000
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 8000
-        envFrom:
-        - configMapRef:
-            name: spinnaker-demo-config
-
----
-
-kind: Service
-apiVersion: v1
-metadata:
-  name: spinnaker-demo
-  namespace: default
-spec:
-  selector:
-    source: demo
-    app: spinnaker
-  ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 8000
+        - containerPort: 80
