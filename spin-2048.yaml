@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: my-2048-deployment
+  name: my-2048-deployment
   labels:
     app: my-2048
 spec:
@@ -16,19 +16,19 @@ spec:
     spec:
       containers:
       - name: my-2048
-        image: sdscello/2048:1
+        image: sdscello/2048:1
         ports:
         - containerPort: 80
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: my-2048-service
-  labels:
-    app: my-2048
+  name: my-2048-service
+  labels:
+    app: my-2048
 spec:
-  type: LoadBalancer
-  ports:
-  - port: 80
-  selector:
-    app: my-2048
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: my-2048
