@@ -1,27 +1,59 @@
 apiVersion: v1
-kind: Service
+kind: ConfigMap
 metadata:
-  name: my-2048
-spec:
-  selector:
-    app: my-2048
-  ports:
-  - protocol: TCP
-    port: 80
+  name: spinnaker-demo-config
+  namespace: default
+data:
+  NEW_FEATURE: "true"
+
 ---
-apiVersion: extensions/v1beta1
+
+apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  name: my-2048
+  name: spinnaker-demo
+  namespace: default
+  labels:
+    source: demo
+    stack: frontend
+    app: spinnaker
 spec:
-  replicas: 1
-  template:
-    metadata:
-      labels:
-        app: my-2048
-    spec:
-      containers:
-      - name: my-2048
-        image: sdscello/2048:1
-        ports:
-        - containerPort: 80
+  replicas: 3
+  selector:
+    matchLabels:
+      source: demo
+      app: spinnaker
+  template:
+    metadata:
+      labels:
+        source: demo
+        app: spinnaker
+    spec:
+      containers:
+      - name: primary
+        image: index.docker.io/lwander/spin-kub-v2-demo
+        ports:
+        - containerPort: 8000
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8000
+        envFrom:
+        - configMapRef:
+            name: spinnaker-demo-config
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: spinnaker-demo
+  namespace: default
+spec:
+  selector:
+    source: demo
+    app: spinnaker
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8000
