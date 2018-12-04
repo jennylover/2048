@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: can-2048-deployment
+  name: 2048-deployment
   labels:
     app: my-2048
 spec:
@@ -27,7 +27,7 @@ metadata:
     prometheus.io/path: /
     prometheus.io/port: "8000"
     prometheus.io/scrape: "true"
-  name: can-2048-service
+  name: 2048-service
   labels:
     app: my-2048
 spec:
