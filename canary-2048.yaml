@@ -33,6 +33,9 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-  - port: 80
+  - name: http
+    port: 80
+  - name: http-metrics
+    port: 8000
   selector:
     app: my-2048
