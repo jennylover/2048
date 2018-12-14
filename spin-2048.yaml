@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: spin-2048-deployment
+  name: test-2048-deployment
   labels:
     app: my-2048
 spec:
@@ -23,7 +23,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: spin-2048-service
+  name: test-2048-service
   labels:
     app: my-2048
 spec:
