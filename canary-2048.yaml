@@ -35,7 +35,5 @@ spec:
   ports:
   - name: http
     port: 80
-  - name: http-metrics
-    port: 8000
   selector:
     app: my-2048
