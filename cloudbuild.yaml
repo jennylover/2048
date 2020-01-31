@@ -27,9 +27,9 @@ steps:
     args:
       - '-c'
       - |
-          CLUSTER=${CLOUDSDK_CONTAINER_CLUSTER}
+          CLUSTER=istio-migration
           PROJECT=$$(gcloud config get-value core/project)
-          REGION=${CLOUDSDK_COMPUTE_REGION}
+          REGION=asia-northeast1
           gcloud container clusters get-credentials "$${CLUSTER}" \
             --project "$${PROJECT}" \
             --region "$${REGION}"  
