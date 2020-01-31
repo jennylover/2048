@@ -27,9 +27,9 @@ steps:
     args:
       - '-c'
       - |
-          CLUSTER=${_CLOUDSDK_CONTAINER_CLUSTER}
+          CLUSTER=${CLOUDSDK_CONTAINER_CLUSTER}
           PROJECT=$$(gcloud config get-value core/project)
-          REGION=${_CLOUDSDK_COMPUTE_REGION}
+          REGION=${CLOUDSDK_COMPUTE_REGION}
           gcloud container clusters get-credentials "$${CLUSTER}" \
             --project "$${PROJECT}" \
             --region "$${REGION}"  
