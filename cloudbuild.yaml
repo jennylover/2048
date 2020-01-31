@@ -1,0 +1,38 @@
+steps:
+### Build
+  - id: 'build'
+    name: 'gcr.io/cloud-builders/docker'
+    entrypoint: 'bash'
+    args: 
+      - '-c'
+      - |
+          docker build -t gcr.io/$PROJECT_ID/2048:${SHORT_SHA} .
+### Test
+### Publish
+  - id: 'publish'
+    name: 'gcr.io/cloud-builders/docker'
+    entrypoint: 'bash'
+    args: 
+      - '-c'
+      - |
+          docker push gcr.io/$PROJECT_ID/2048:${SHORT_SHA}
+### Deploy
+  - id: 'deploy'
+    name: 'gcr.io/cloud-builders/gcloud'
+    env:
+      - 'CLOUDSDK_COMPUTE_REGION=asia-northeast1'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=istio-migration'
+      - 'KUBECONFIG=/kube/config'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+          CLUSTER=${_CLOUDSDK_CONTAINER_CLUSTER}
+          PROJECT=$$(gcloud config get-value core/project)
+          REGION=${_CLOUDSDK_COMPUTE_REGION}
+          gcloud container clusters get-credentials "$${CLUSTER}" \
+            --project "$${PROJECT}" \
+            --region "$${REGION}"  
+          sed -i 's|gcr.io/popori-gcct-pj/2048:.*|gcr.io/popori-gcct-pj/2048:${SHORT_SHA}|' my-2048.yaml
+          
+          kubectl apply -f my-2048.yaml
