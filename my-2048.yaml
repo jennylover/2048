@@ -1,29 +1,29 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: my-2048
-  labels:
-    app: my-2048
+  name: my-2048
+  labels:
+    app: my-2048
 spec:
-  type: LoadBalancer
-  ports:
-  - port: 80
-  selector:
-    app: my-2048
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: my-2048
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: my-2048
+  name: my-2048
 spec:
-  replicas: 1
-  template:
-    metadata:
-      labels:
-        app: my-2048
-    spec:
-      containers:
-      - name: my-2048
-        image: gcr.io/popori-gcct-pj/2048:1
-        ports:
-        - containerPort: 80
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: my-2048
+    spec:
+      containers:
+      - name: my-2048
+        image: gcr.io/popori-gcct-pj/2048:1
+        ports:
+        - containerPort: 80
