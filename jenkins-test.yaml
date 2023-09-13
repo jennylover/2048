@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: my-2048
-        image: 226258797673.dkr.ecr.ap-northeast-2.amazonaws.com/jenkins-ci-test:4
+        image: 226258797673.dkr.ecr.ap-northeast-2.amazonaws.com/jenkins-ci-test:5
         ports:
         - containerPort: 80
